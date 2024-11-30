@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Student Management System</h1>
+        <nav>
+            <div class="button-container">
+                <button onclick="showSection('add-lecture')">Add Lecture</button>
+            </div>
+            <div class="button-container">
+                <button onclick="showSection('add-student')">Add Student</button>
+            </div>
+            <div class="button-container">
+                <button onclick="showSection('view-results')">View Results</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Add Course Section -->
+        <section id="add-lecture" class="content-section" style="display: none;">
+            <h2>Add Lecture</h2>
+            <form id="lecture-form" onsubmit="addLecture(event)">
+                <label for="lecture-name">Lecture Name:</label>
+                <input type="text" id="lecture-name" class="input-bg" required> <br>
+        
+                <label for="course-id">Course ID:</label>
+                <input type="text" id="course-id" class="input-bg" required> <br>
+        
+                <label for="course-credit">Credits:</label>
+                <input type="number" id="course-credit" class="input-bg" required> <br>
+        
+                <label for="grading-scale-type">Grading Scale:</label>
+                <select id="grading-scale-type" class="input-bg" required>
+                    <option value="10-point">10-point scale</option>
+                    <option value="7-point">7-point scale</option>
+                </select> <br>
+        
+                <div class="button-container">
+                    <button type="submit" class="content-button">Add Lecture</button>
+                </div>
+            </form>
+        </section>
+        
+
+        <!-- Add Student Section -->
+        <section id="add-student" class="content-section" style="display: none;">
+            <h2>Add Student</h2>
+            <form id="student-form" onsubmit="addStudent(event)">
+                <label for="lecture-dropdown">Select Lecture:</label>
+                <select id="lecture-dropdown" class="input-bg" required>
+                    <option value="" disabled selected>Select a lecture</option>
+                    <!-- This dropdown will be dynamically populated with lecture options -->
+                </select>
+                <br>
+                <label for="student-id">Student ID:</label>
+                <input type="text" id="student-id" class="input-bg" required>
+                <br>
+                <label for="student-name">Student Name:</label>
+                <input type="text" id="student-name" class="input-bg" required>
+                <br>
+                <label for="student-surname">Student Surname:</label>
+                <input type="text" id="student-surname" class="input-bg" required>
+                <br>
+                <label for="midterm-score">Midterm Score:</label>
+                <input type="number" id="midterm-score" class="input-bg" required>
+                <br>
+                <label for="final-score">Final Score:</label>
+                <input type="number" id="final-score" class="input-bg" required>
+                <br>
+                <div class="button-container">
+                    <button type="submit" class="content-button">Add Student</button>
+                </div>
+            </form>
+        </section>
+        
+
+        <!-- View Results Section -->
+        <section id="view-results" class="content-section" style="display: none;">
+            <h2>View Results</h2>
+            <div>
+                <input type="text" id="search-student" placeholder="Search Student" class="input-bg">
+                <button onclick="searchStudent()" class="content-button">Search</button>
+            </div>
+            <div>
+                <button onclick="filterResults('passed')" class="content-button">View Passed</button>
+                <button onclick="filterResults('failed')" class="content-button">View Failed</button>
+                <button onclick="displayAllResults()" class="content-button">View All</button>
+            </div>
+            <div id="results-table">
+                <!-- Dynamic results table or student profile will be rendered here -->
+            </div>
+        </section>
+
+        <!-- Default Content Section -->
+        <section id="default-content">
+            <h2>Welcome to the Student Management System</h2>
+            <p>Please use the navigation buttons above to manage courses, add students, and view results.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Student Management System</p>
+    </footer>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
