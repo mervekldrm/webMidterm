@@ -12,7 +12,7 @@
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Student Management System</h1>
+        <h1>MUGLA SITKI KOCMAN UNIVERSITY</h1>
         <nav>
             <div class="button-container">
                 <button onclick="showSection('add-lecture')">Add Lecture</button>
@@ -53,7 +53,6 @@
             </form>
         </section>
         
-
         <!-- Add Student Section -->
         <section id="add-student" class="content-section" style="display: none;">
             <h2>Add Student</h2>
@@ -61,7 +60,6 @@
                 <label for="lecture-dropdown">Select Lecture:</label>
                 <select id="lecture-dropdown" class="input-bg" required>
                     <option value="" disabled selected>Select a lecture</option>
-                    <!-- This dropdown will be dynamically populated with lecture options -->
                 </select>
                 <br>
                 <label for="student-id">Student ID:</label>
@@ -85,19 +83,44 @@
             </form>
         </section>
         
-
         <!-- View Results Section -->
         <section id="view-results" class="content-section" style="display: none;">
             <h2>View Results</h2>
+
+            <!-- Search by Lecture -->
             <div>
-                <input type="text" id="search-student" placeholder="Search Student" class="input-bg">
-                <button onclick="searchStudent()" class="content-button">Search</button>
+                <label for="lecture-search">Search by Lecture:</label>
+                <select id="lecture-search" class="input-bg">
+                    <option value="" disabled selected>Select a lecture</option>
+                    <!-- This will be dynamically populated with available lectures -->
+                </select>
             </div>
+
+            <!-- Search by Student ID -->
             <div>
-                <button onclick="filterResults('passed')" class="content-button">View Passed</button>
-                <button onclick="filterResults('failed')" class="content-button">View Failed</button>
-                <button onclick="displayAllResults()" class="content-button">View All</button>
+                <label for="search-student-id">Search by Student ID:</label>
+                <input type="text" id="search-student-id" class="input-bg" placeholder="Search Student ID">
             </div>
+
+            <!-- Search by Student Name -->
+            <div>
+                <label for="search-student-name">Search by Student Name:</label>
+                <input type="text" id="search-student-name" class="input-bg" placeholder="Search by Name">
+            </div>
+            <!-- Search Button -->
+            <div class="button-container">
+                <button onclick="searchResults()" class="content-button">Search</button>
+            </div>
+            <!-- Filter Buttons -->
+            <div class="button-container">
+                <button onclick="viewAllResults(document.getElementById('lecture-search').value)" class="content-button">View All Results</button>
+                <button onclick="viewFailedStudents(document.getElementById('lecture-search').value)" class="content-button">View Failed Students</button>
+                <button onclick="viewPassedStudents(document.getElementById('lecture-search').value)" class="content-button">View Passed Students</button>
+                <button onclick="viewLectureDetails(document.getElementById('lecture-search').value)" class="content-button">View Lecture Details</button>
+
+            </div>
+
+            <!-- Results Table -->
             <div id="results-table">
                 <!-- Dynamic results table or student profile will be rendered here -->
             </div>
@@ -105,7 +128,7 @@
 
         <!-- Default Content Section -->
         <section id="default-content">
-            <h2>Welcome to the Student Management System</h2>
+            <h2>Welcome to the Student Information System</h2>
             <p>Please use the navigation buttons above to manage courses, add students, and view results.</p>
         </section>
     </main>
